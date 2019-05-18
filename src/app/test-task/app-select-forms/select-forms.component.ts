@@ -12,8 +12,16 @@ class AppSelectFormsComponent {
     }
 
     $onInit() {
-        this.selectedForms = this.forms.filter((x: IFormsItem) => x.required);
+        this.initialConcat();
         this.setHasAdd();
+    }
+
+    private initialConcat(): void {
+        const concat = [
+            ...this.forms.filter((x: IFormsItem) => x.required),
+            ...this.forms.filter((x: IFormsItem) => this.ngModel.indexOf(x.formName) !== -1)
+        ];
+        this.selectedForms = concat.filter((item, pos) => concat.indexOf(item) === pos);
     }
 
     private setHasAdd(): void {
@@ -27,8 +35,10 @@ class AppSelectFormsComponent {
     }
 
     private update(item: IFormsItem, index: number): void {
-        this.selectedForms[index] = item;
-        this.syncModel();
+        if (!this.selectedForms[index].required) {
+            this.selectedForms[index] = item;
+            this.syncModel();
+        }
     }
 
     private add(item: IFormsItem): void {

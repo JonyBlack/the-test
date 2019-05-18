@@ -1,4 +1,53 @@
-# angularjs-webpack-starter
+**Разработать компонент множественного выбора элементов из фиксированного списка значений.** 
+
+Покрыть тестами. Фокус на функциональной части, стили-верстка - минимально необходимые для правильного функционирования.
+
+
+**Средства реализации:** 
+
+- angularjs,
+- typescript, 
+- webpack, 
+- karma-jasmine
+
+![alt text](./docs/download.png)
+
+Пример использования:
+
+```
+<select-form ng-model="selectedForms" forms="availableForms">
+</select-form>
+```
+
+**availableForms:** <code><{ formName: string,  required: boolean }>[]</code>
+
+
+**formName** -имя формы отображаемое в dropdown
+
+**required** - форма обязательна для выбора, dropdown отображается как disabled, пользователь не может удалить/редактировать такую форму, в ngModel добавляются такие формы автоматически.
+
+
+**selectedForms(ngModel)** - массив выбранных форм <code>string[]</code>
+
+
+**Каждая форма представленная в availableForms может быть выбрана только один раз.** Dropdown должны содержать только значения доступные для выбора.
+
+**При нажатии на кнопку(+)** появляется новый dropdown со списком свободных(не выбранных) форм. Кнопка(+) не будет отображаться если все формы выбраны.
+
+
+**При нажатии на кнопку(x)** удаляется последний dropdown. Required dropdown удалять нельзя.
+
+**Обязательные формы** - редактировать нельзя. Но не обязательные - можно.
+
+**Обсуждения:**
+
+Javascript: closure, lexical scoping, hoisting, promise
+
+Angular digest cycle, bindings, dependency injection, $parse vs $compile vs $interpolate
+
+RX: concept, operators flatmap, concatmap, mergemap;
+
+# Based on the angularjs-webpack-starter
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/frederikprijck/angularjs-webpack-starter.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/frederikprijck/angularjs-webpack-starter.svg?branch=master)](https://travis-ci.org/frederikprijck/angularjs-webpack-starter)
