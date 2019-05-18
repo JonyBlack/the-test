@@ -1,0 +1,11 @@
+<label>Forms</label>
+<hr>
+
+<select-form ng-model="$ctrl.selectedForms" forms="$ctrl.availableForms">
+</select-form>
+
+<hr/>
+<div><strong>Debug: selectedForms:</strong></div>
+<pre>
+{{ $ctrl.selectedForms | json }}
+    </pre>

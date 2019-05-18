@@ -1,0 +1,20 @@
+<button ng-if="!$ctrl.selectedForms.length && !$ctrl.hasAdd"
+        ng-click="$ctrl.setHasAdd()">+
+</button>
+
+<div ng-repeat="selectedItem in $ctrl.selectedForms">
+    <select ng-model="selectedItem"
+            ng-disabled="selectedItem.required"
+            ng-options="item.formName for item in $ctrl.forms | uniqueSelected: $ctrl.selectedForms : selectedItem"
+            ng-change="$ctrl.update(selectedItem, $index)">
+    </select>
+
+
+    <ng-container ng-if="$last && !$ctrl.hasAdd">
+        <button ng-if="!selectedItem.required" ng-click="$ctrl.remove(selectedItem)">X</button>
+
+        <button ng-if="($ctrl.forms | uniqueSelected: $ctrl.selectedForms).length"
+                ng-click="$ctrl.setHasAdd()">+
+        </button>
+    </ng-container>
+</div>
